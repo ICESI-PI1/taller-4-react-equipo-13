@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react'
 import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
 import PropTypes from 'prop-types'
 import axios from  '../config/axios'
+import { Link } from 'react-router-dom';
+
 
 const Authentication = ({loginUser, userEdit}) => {
+
+  
 
   const[username, setUsername]=useState('')
   const[password, setPassword]= useState('')
@@ -25,6 +29,7 @@ const Authentication = ({loginUser, userEdit}) => {
     }).catch(err => {
       console.log(err)
     });
+    
   }
 
   return (
@@ -41,9 +46,11 @@ const Authentication = ({loginUser, userEdit}) => {
           <Input id="examplePassword" name="password" placeholder="Contraseña" type="password" onChange={(e)=>{setPassword(e.target.value)}} />
         </FormGroup>
         {' '}
+        <Link to="/choose">
         <Button onClick={handleClick}>
           Submit
         </Button>
+        </Link>
       </Form> 
     </div>
   )

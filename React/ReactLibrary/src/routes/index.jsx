@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import CreateAuthorList from '../pages/CreateAuthorList';
 import CreateBook from '../pages/CreateBook';
 import BooksByAuthor from '../pages/BooksByAuthor';
+import Choose from '../pages/Choose'
 
 const  Router = () => (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const  Router = () => (
             <Route path="/crear-autor" element={<CreateAuthorList/>}/>
             <Route path = "/crear-libro" element = {<CreateBook/>}/>
             <Route path = "/libros-por-autor" element = {<BooksByAuthor/>}/>
+            <Route path = "/choose" element={<Choose/>}/>
         </Routes>
     </BrowserRouter>
 )

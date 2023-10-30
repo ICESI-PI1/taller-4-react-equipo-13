@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
+import { Link } from 'react-router-dom';
 
 
 function AuthorForm({addAuthor, authorEdit}){
@@ -34,9 +35,11 @@ function AuthorForm({addAuthor, authorEdit}){
                 <Label for="exampleN">Nacionalidad</Label>
                 <Input id="exampleN" name="Name" placeholder="Pon la nacionalidad del autor" type="Name" onChange={(e)=>{setNationality(e.target.value)}}/>
             </FormGroup>
+            <Link to="/autores">
             <Button onClick={handleClick}>
                 Submit
             </Button>
+            </Link>
         </Form>
     )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 
 const BookForm = ({addBook, bookEdit}) => {
@@ -45,10 +46,11 @@ const BookForm = ({addBook, bookEdit}) => {
             <Input id="idAuthor" name="idAuthor" placeholder="id autor" type="text" onChange={(e)=>{setAuthorId(e.target.value)}}/>
         </FormGroup>
         
-        
+        <Link to="/libros">
         <Button onClick={handleClick}>
             Enviar
         </Button>
+        </Link>
     </Form>
   )
 }
