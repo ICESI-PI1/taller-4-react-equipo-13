@@ -16,4 +16,11 @@ public class Book {
     public Book (){
 
     }
+
+    public Book(Book book){
+        this.id= book.getId();
+        this.title= book.getTitle();
+        this.publicationDate = book.getPublicationDate();
+        this.authorId = book.getAuthorId();
+    }
 }

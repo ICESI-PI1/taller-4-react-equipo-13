@@ -30,14 +30,16 @@ public class BooksController {
     }
 
 
-    @PostMapping()
+    @PostMapping("")
     public Optional<Book> create(@RequestBody Book book){
-        if(!this.service.findById(book.getId()).isPresent())
-            return this.service.save(book);
-        throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Entity already in the program"
-        );
-
+        if(!this.service.findById(book.getId()).isPresent()){
+            System.out.println(book);
+            return this.service.save(book);}
+        else{
+            System.out.println("mama donde estan los juguetes");
+            changeBook(book.getId(), book);
+            return Optional.of(book);
+        }
     }
 
     @PutMapping("/{id}")
@@ -45,7 +47,6 @@ public class BooksController {
         if(this.service.findById(id).isPresent()){
             this.service.edit(id,book);
         }
-
         return book;
     }
 
