@@ -6,12 +6,21 @@ import axios from  '../config/axios'
 import { Link } from 'react-router-dom';
 
 
-const Authentication = ({loginUser, userEdit}) => {
+const Authentication = ({userEdit}) => {
 
   
 
   const[username, setUsername]=useState('')
   const[password, setPassword]= useState('')
+
+  const buttonStyle = {
+    backgroundColor: 'blue',
+    color: 'white',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+    width: '100%'
+};
   
     useEffect(()=>{
         setUsername(userEdit.username)
@@ -37,16 +46,20 @@ const Authentication = ({loginUser, userEdit}) => {
       <h1>Login</h1>
       <Form>
         <FormGroup>
-          <Label for="exampleUsername"> Usuario </Label>
+          <Label for="exampleUsername" style={{
+            display:'flex'
+          }}> Usuario </Label>
           <Input id="exampleUsername" name="username" placeholder="Usuario" type="text" onChange={(e)=>{setUsername(e.target.value)}} />
         </FormGroup>
         {' '}
         <FormGroup>
-          <Label for="examplePassword" > Contraseña </Label>
+          <Label for="examplePassword" style={{
+            display:'flex'
+          }} > Contraseña </Label>
           <Input id="examplePassword" name="password" placeholder="Contraseña" type="password" onChange={(e)=>{setPassword(e.target.value)}} />
         </FormGroup>
         {' '}
-        <Button onClick={handleClick} href="/seleccionar">
+        <Button onClick={handleClick} style={buttonStyle} href="/seleccionar">
           Submit
         </Button>
       </Form> 

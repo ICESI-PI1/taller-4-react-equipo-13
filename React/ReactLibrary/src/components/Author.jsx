@@ -87,8 +87,7 @@ function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor}) {
             </td>
             <td>
               <Link to={{
-                    pathname: '/autores/editar',
-                    state: { object: author },
+                    pathname: `/autores/editar/${author.id}`,
                   }}>
                 <Button color="success" >
                   Edit

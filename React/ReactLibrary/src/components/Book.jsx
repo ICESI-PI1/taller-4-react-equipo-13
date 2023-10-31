@@ -66,7 +66,9 @@ function Bookview({ books, getOneBook, getBooks, onDeleteBook }) {
               </Button>
             </td>
             <td>
-              <Link to="/libros-por-autor">
+              <Link to={{
+                    pathname: `/libros/editar/${book.id}`,
+                  }}>
                 <Button color="success" >
                   Edit
                 </Button>

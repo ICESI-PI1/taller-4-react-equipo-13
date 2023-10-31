@@ -1,8 +1,11 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
-import { Link } from 'react-router-dom';
+import { Link , useParams } from 'react-router-dom';
+
 const BookFormEdit = ({addBook, bookEdit}) => {
+
+    console.log(bookEdit)
 
     const[id, setId]=useState('')
     const[title, setTitle]= useState('')
@@ -17,7 +20,7 @@ const BookFormEdit = ({addBook, bookEdit}) => {
     }, [bookEdit])
     
     const handleClick = () =>{
-        console.log({id,title, publicationDate, authorId})
+        //console.log({id,title, publicationDate, authorId})
         addBook({id,title,publicationDate, authorId})
     }
 
@@ -29,27 +32,27 @@ const BookFormEdit = ({addBook, bookEdit}) => {
             <Label style={{
             display: 'flex'
         }} for="exampleBooks"> Numero de identificacion </Label>
-            <Input id="idBook" name="idBook" placeholder="id" type="text" onChange={(e)=>{setId(e.target.value)}} />
+            <Input id="idBook" name="idBook" placeholder="id" type="text" value={bookEdit.id} onChange={(e)=>{setId(e.target.value)}} />
         </FormGroup>
         
         <FormGroup>
             <Label style={{
             display: 'flex'
         }} for="exampleBooks" > Titulo del libro </Label>
-            <Input id="bookTitle" name="tittle" placeholder="Titulo" type="text" onChange={(e)=>{setTitle(e.target.value)}}/>
+            <Input id="bookTitle" name="tittle" placeholder="Titulo" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
         </FormGroup>
               <FormGroup>
             <Label style={{
             display: 'flex'
         }} for="exampleBooks" > Fecha de publicacion </Label>
-            <Input id="bookPublicationDate" name="publicationDate" placeholder="fecha de publicacion" type="date" onChange={(e)=>{setPublicationDate(e.target.value)}}/>
+            <Input id="bookPublicationDate" name="publicationDate" placeholder="fecha de publicacion" value={publicationDate} type="date" onChange={(e)=>{setPublicationDate(e.target.value)}}/>
         </FormGroup>
         
         <FormGroup>
             <Label style={{
             display: 'flex'
         }} for="exampleBooks" > Numero de identificacion del autor </Label>
-            <Input id="idAuthor" name="idAuthor" placeholder="id autor" type="text" onChange={(e)=>{setAuthorId(e.target.value)}}/>
+            <Input id="idAuthor" name="idAuthor" placeholder="id autor" type="text" value={authorId} onChange={(e)=>{setAuthorId(e.target.value)}}/>
         </FormGroup>
         
         <Link to="/libros">

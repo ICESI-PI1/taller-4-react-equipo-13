@@ -19,9 +19,9 @@ const Login = () => {
 
   return (
     <bookcontext.Provider>
-          <Authentication loginUser={loginUser} userEdit={setUserEdit}/>
+          <Authentication userEdit={setUserEdit}/>
     </bookcontext.Provider>
   )
 }
 
-export default Login
+export default Login  
