@@ -34,7 +34,6 @@ const EditAuthor = () => {
     }
 
     const addAuthor = async (author) => {
-        console.log("HAERASDFASDF")
         try {
             
             if (authorEdit.id) {

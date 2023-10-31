@@ -45,8 +45,8 @@ const EditBook = () => {
         } else {
           */
           // Realiza una solicitud POST para crear un nuevo libro
-          const res = await axios.post("/libros", book);
-          if (res.status === 201) {
+          const res = await axios.put(`/libros/${bookEdit.id}`, book);
+          if (res.status === 200) {
             setBookEdit(res.data);
           }
         //}
