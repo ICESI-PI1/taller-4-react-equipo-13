@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Table, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor }) {
+function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor}) {
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -27,10 +27,28 @@ function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor }) {
   }, []);
 
   return (
-        
-    <Table responsive bordered>
-      <thead>
-      <div class="row">
+    <>
+    <div style={{
+      display: 'flex', 
+      justifyContent: 'space-between',
+      marginBottom: '40px'
+    }}>
+      <Link to="/crear-autor">
+        <Button style={{
+          width: '150px'
+        }} color="success" className="text-nowrap">Agregar autor</Button>
+      </Link>
+      <Link to="/libros-por-autor">
+        <Button style={{
+          width: '150px'
+        }} color="success" className="text-nowrap">Libros por autor</Button>
+      </Link>
+    </div>
+    <div class="row" style={{
+      display: 'flex', 
+      justifyContent: 'space-between',
+      marginBottom: '20px'
+    }}>
         <div class="col ml-2">
             <Input 
               type="text"
@@ -38,20 +56,19 @@ function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor }) {
               onChange={handleInputChange}
             />
         </div>
-            <div class="col mr-2 d-flex flex-row justify-content-between">
-            <Button color="success" onClick={handleSearch}>Buscar</Button>
-            <Link to="/crear-autor">
-                <Button color="success" className="text-nowrap">Agregar autor</Button>
-            </Link>
-            <Link to="/libros-por-autor">
-                <Button color="success" className="text-nowrap">libros</Button>
-            </Link>
+        <div class="col mr-2 d-flex" style={{
+          display: 'flex', 
+          justifyContent: 'flex-end'
+        }}>
+          <Button color="success" onClick={handleSearch}>Buscar</Button>
         </div>
-      </div>
+    </div>
+    <Table responsive bordered>
+      <thead>
         <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>nationality</th>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Nacionalidad</th>
         </tr>
       </thead>
       <tbody>
@@ -68,10 +85,21 @@ function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor }) {
                 Delete
               </Button>
             </td>
+            <td>
+              <Link to={{
+                    pathname: '/autores/editar',
+                    state: { object: author },
+                  }}>
+                <Button color="success" >
+                  Edit
+                </Button>
+              </Link>
+            </td>
           </tr>
         ))}
       </tbody>
     </Table>
+    </>
   )
 }
 

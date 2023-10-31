@@ -31,6 +31,7 @@ function BookList(){
         try {
           await axios.delete(`/libros/${bookId}`);
           getBooks(); // Actualiza la lista después de la eliminación
+          alert('¡Acabas de borrar un libro!');
         } catch (e) {
           console.log(e);
         }
@@ -39,7 +40,9 @@ function BookList(){
     
     return(
         <bookcontext.Provider>
-            <h1>Libros</h1>
+            <h1 style={{
+                marginBottom: '30px'
+            }} >Libros</h1>
             <Book books={Array.isArray(bookList)? bookList: [bookList]} getOneBook={getOneBook} getBooks={getBooks} onDeleteBook={handleDeleteBook} searchValue={searchValue}/>
         </bookcontext.Provider>
     )

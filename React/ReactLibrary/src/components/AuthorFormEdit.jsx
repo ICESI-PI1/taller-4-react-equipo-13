@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
-function AuthorForm({addAuthor, authorEdit}){
+function AuthorFormEdit({addAuthor, authorEdit}, {author}){
+
+    const location = useLocation();
+    const destinationObject = location.state.object;
 
     const[id, setId]=useState('')
     const[name, setName]= useState('')
@@ -34,29 +38,30 @@ function AuthorForm({addAuthor, authorEdit}){
 
     return(
         <Form>
+            <h1>{destinationObject}</h1>
             <h1 style={{
                 fontSize: '35px', 
                 marginBottom: '30px'
-            }} >Agregar un Autor</h1>
+            }} >Editar un Autor</h1>
             <FormGroup>
                 <div>
                     <Label style={{
                         display: 'flex'
                     }} for="exampleId">Numero de identificacion</Label>
                 </div>
-                <Input id="exampleId" name="id" placeholder="id" type="id" onChange={(e)=>{setId(e.target.value)}} />
+                <Input id="exampleId" name="id" placeholder="id" type="id" value={author.id} onChange={(e)=>{setId(e.target.value)}} />
             </FormGroup>
             <FormGroup>
                 <Label style={{
                         display: 'flex'
                     }} for="exampleName">Nombre del autor</Label>
-                <Input id="exampleName" name="Name" placeholder="Nombre" type="Name" onChange={(e)=>{setName(e.target.value)}}/>
+                <Input id="exampleName" name="Name" placeholder="Nombre" type="Name" value={author.name} onChange={(e)=>{setName(e.target.value)}}/>
             </FormGroup>
             <FormGroup>
                 <Label style={{
                         display: 'flex'
                     }} for="exampleN">Nacionalidad</Label>
-                <Input id="exampleN" name="Name" placeholder="Nacionalidad" type="Name" onChange={(e)=>{setNationality(e.target.value)}}/>
+                <Input id="exampleN" name="Name" placeholder="Nacionalidad" type="Name" value={author.nationality} onChange={(e)=>{setNationality(e.target.value)}}/>
             </FormGroup>
             <Link to="/autores">
             <Button onClick={handleClick} style={buttonStyle}>
@@ -67,9 +72,9 @@ function AuthorForm({addAuthor, authorEdit}){
     )
 }
 
-AuthorForm.propTypes = {
+AuthorFormEdit.propTypes = {
     addAuthor: PropTypes.func, 
     authorEdit:PropTypes.object
 }
 
-export default AuthorForm
+export default AuthorFormEdit
