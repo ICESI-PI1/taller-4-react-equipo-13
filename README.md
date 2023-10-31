@@ -44,7 +44,7 @@ En este informe, se presentará una descripción detallada de las actividades ll
 - Aplicamos estilos a la aplicación utilizando la librería Reactstrap para componentes de interfaz de usuario.
 - Implementamos mejoras adicionales para mejorar la usabilidad y apariencia de la aplicación.
 
-### Tareas Pendientes
+### Tareas Por Realizar
 
 - A pesar de haber implementado una funcionalidad de autenticación, aún queda por completar la gestión de roles y permisos para restringir el acceso a ciertas secciones de la aplicación según el nivel de usuario.
 - Se requiere una mayor validación de formularios y manejo de errores en la interfaz de usuario para proporcionar una experiencia más amigable al usuario.
