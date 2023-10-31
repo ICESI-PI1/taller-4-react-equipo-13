@@ -4,6 +4,7 @@ import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
 import PropTypes from 'prop-types'
 import axios from  '../config/axios'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Authentication = ({userEdit}) => {
@@ -27,18 +28,21 @@ const Authentication = ({userEdit}) => {
         setPassword(userEdit.password)
     }, [userEdit])
 
-  const handleClick = () =>{
-    let user = {username, password}
+    let user = {username, password};
+    let navigate = useNavigate(); // Obtén la función navigate
+
+  const handleClick = () => {
     axios.post("/authenticate", user)
-    .then(res => {
-      if(res.status === 200 ) {
-        localStorage.setItem("token", res.data.token)
-      } 
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    });
-    
+      .then(res => {
+        if(res.status === 200 ) {
+          localStorage.setItem("token", res.data.token);
+          navigate('/seleccionar'); // Navega a la ruta deseada
+        }
+        console.log(res);
+      }).catch(err => {
+        alert("¡La contraseña ingresada esta mala!")
+        console.log(err);
+      });
   }
 
   return (
@@ -59,7 +63,7 @@ const Authentication = ({userEdit}) => {
           <Input id="examplePassword" name="password" placeholder="Contraseña" type="password" onChange={(e)=>{setPassword(e.target.value)}} />
         </FormGroup>
         {' '}
-        <Button onClick={handleClick} style={buttonStyle} href="/seleccionar">
+        <Button onClick={handleClick} style={buttonStyle}>
           Submit
         </Button>
       </Form> 
