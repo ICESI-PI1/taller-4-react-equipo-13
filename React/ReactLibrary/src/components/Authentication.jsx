@@ -46,11 +46,9 @@ const Authentication = ({loginUser, userEdit}) => {
           <Input id="examplePassword" name="password" placeholder="Contraseña" type="password" onChange={(e)=>{setPassword(e.target.value)}} />
         </FormGroup>
         {' '}
-        <Link to="/choose">
-        <Button onClick={handleClick}>
+        <Button onClick={handleClick} href="/seleccionar">
           Submit
         </Button>
-        </Link>
       </Form> 
     </div>
   )

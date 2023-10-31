@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Table, Input, Button } from 'reactstrap';
 
 function AuthorBooks({authors, getAuthorBooks}) {
 
@@ -16,16 +17,26 @@ function AuthorBooks({authors, getAuthorBooks}) {
   return (
     
         <div>
-          <h1>Buscar Libros por Autor</h1>
-          <input
-            type="text"
-            placeholder="ID del autor"
-            value={searchValue}
-            onChange={handleInputChange}
-          />
-          <button onClick={handleSearch}>Buscar</button>
+          <h1 style={{
+            marginBottom: '50px'
+          }} >Buscar Libros por Autor</h1>
+          <div style={{
+            display: 'flex', 
+            flex: 'flex-wrap'
+          }}>
+            <Input
+              type="text"
+              placeholder="ID del autor"
+              value={searchValue}
+              onChange={handleInputChange}
+              style={{
+                marginRight: '40px'
+              }}
+            />
+            <Button color='success' onClick={handleSearch}>Buscar</Button>
+          </div>
            {(
-            <table>
+            <Table>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -40,7 +51,7 @@ function AuthorBooks({authors, getAuthorBooks}) {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </Table>
           )}
         </div>
       );

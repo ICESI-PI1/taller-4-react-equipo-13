@@ -25,21 +25,24 @@ function Bookview({ books, getOneBook, getBooks, onDeleteBook }) {
   }, []);
 
   return (
+    <>
+    <div style={{
+      marginBottom: '30px'
+    }} className="row">
+      <div className="col ml-2">
+        <Input type="text" value={searchValue} onChange={handleInputChange} />
+      </div>
+      <div className="col mr-2 d-flex flex-row justify-content-between">
+        <Button color="success" onClick={handleSearch}>
+          Buscar
+        </Button>
+        <Link to="/crear-libro">
+          <Button color="primary">Agregar libro</Button>
+        </Link>
+      </div>
+    </div>
     <Table responsive bordered>
       <thead>
-        <div className="row">
-          <div className="col ml-2">
-            <Input type="text" value={searchValue} onChange={handleInputChange} />
-          </div>
-          <div className="col mr-2 d-flex flex-row justify-content-between">
-            <Button color="success" onClick={handleSearch}>
-              Buscar
-            </Button>
-            <Link to="/crear-libro">
-              <Button color="success">agregar libro</Button>
-            </Link>
-          </div>
-        </div>
         <tr>
           <th>id</th>
           <th>title</th>
@@ -62,10 +65,18 @@ function Bookview({ books, getOneBook, getBooks, onDeleteBook }) {
                 Delete
               </Button>
             </td>
+            <td>
+              <Link to="/libros-por-autor">
+                <Button color="success" >
+                  Edit
+                </Button>
+              </Link>
+            </td>
           </tr>
         ))}
       </tbody>
     </Table>
+    </>
   );
 }
 

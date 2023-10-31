@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
+import {useEffect, useState} from 'react'
 import { Form, FormGroup, Button, Label, Input, FormText} from 'reactstrap'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-
-
-const BookForm = ({addBook, bookEdit}) => {
+const BookFormEdit = ({addBook, bookEdit}) => {
 
     const[id, setId]=useState('')
     const[title, setTitle]= useState('')
@@ -23,9 +21,10 @@ const BookForm = ({addBook, bookEdit}) => {
         addBook({id,title,publicationDate, authorId})
     }
 
-  return (   
-    <Form>
-        <h1>Creacion de un libro</h1>
+  return (
+    <>
+     <Form>
+        <h1>Edicion de un libro</h1>
         <FormGroup>
             <Label style={{
             display: 'flex'
@@ -61,12 +60,8 @@ const BookForm = ({addBook, bookEdit}) => {
         </Button>
         </Link>
     </Form>
+    </>
   )
 }
 
-BookForm.propTypes = {
-    addBook: PropTypes.func, 
-    bookEdit:PropTypes.object
-}
-
-export default BookForm
+export default BookFormEdit

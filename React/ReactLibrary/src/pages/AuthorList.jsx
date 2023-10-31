@@ -30,16 +30,18 @@ function AuthorList(){
     const handleDeleteAuthor = async (authorId) => {
         try {
           await axios.delete(`/autores/${authorId}`);
+          alert('¡Acabas de borrar un Autor!');
           getAuthors(); // Actualiza la lista después de la eliminación
         } catch (e) {
           console.log(e);
         }
     }
-
     
     return(
         <bookcontext.Provider>
-            <h1>Autores</h1>
+            <h1 style={{
+                marginBottom: '30px'
+            }} >Autores</h1>
             <Author authors={Array.isArray(authorList) ? authorList : [authorList]} getOneAuthor={getOneAuthor} getAuthors={getAuthors} onDeleteAuthor={handleDeleteAuthor} searchValue={searchValue}/>
         </bookcontext.Provider>
     )

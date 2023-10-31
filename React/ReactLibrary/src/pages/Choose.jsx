@@ -20,7 +20,15 @@ function Choose(){
                   Some quick example text to build on the card title and make up the bulk of the card's content.
                 </CardText>
                 <Link to="/libros">
-                <Button>Ir a libros</Button>
+                <Button style={{
+                  backgroundColor: 'blue',
+                  color: 'white',
+                  padding: '10px 20px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  width: '100%'
+                }}
+                > Ir a libros</Button>
                 </Link>
               </CardBody>
             </Card>
@@ -38,7 +46,16 @@ function Choose(){
                   Some quick example text to build on the card title and make up the bulk of the card's content.
                 </CardText>
                 <Link to="/autores">
-                <Button>Ir a autores</Button>
+                <Button style={{
+                  backgroundColor: 'blue',
+                  color: 'white',
+                  padding: '10px 20px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  width: '100%'
+                }}
+                
+                >Ir a autores</Button>
                 </Link>
               </CardBody>
             </Card>
