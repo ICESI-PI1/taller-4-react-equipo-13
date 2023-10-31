@@ -4,24 +4,31 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
 
-const BookForm = ({addBook, bookEdit}) => {
+const BookForm = ({addBook, bookEdit, alert}) => {
 
     const[id, setId]=useState('')
     const[title, setTitle]= useState('')
     const[publicationDate, setPublicationDate]= useState('')
     const[authorId, setAuthorId]= useState('')   
+    const[al, setAl]= useState('')
     
+    useEffect(()=>{
+        setAl(alert.alert)
+    },[alert])
+
     useEffect(()=>{
         setId(bookEdit.id)
         setTitle(bookEdit.title)
         setPublicationDate(bookEdit.publicationDate)
         setAuthorId(bookEdit.authorId)
     }, [bookEdit])
+
     
-    const handleClick = () =>{
-        console.log({id,title, publicationDate, authorId})
-        addBook({id,title,publicationDate, authorId})
-    }
+    
+    const handleClick = () => {
+        addBook({ id, title, publicationDate, authorId });
+        window.alert(al)
+    };
 
   return (   
     <Form>
@@ -60,13 +67,19 @@ const BookForm = ({addBook, bookEdit}) => {
             Enviar
         </Button>
         </Link>
+        {al && (
+  <div className="alert alert-danger" role="alert">
+    {al}
+  </div>
+)}
     </Form>
   )
 }
 
 BookForm.propTypes = {
     addBook: PropTypes.func, 
-    bookEdit:PropTypes.object
+    bookEdit:PropTypes.object,
+    alert: PropTypes.string,
 }
 
 export default BookForm

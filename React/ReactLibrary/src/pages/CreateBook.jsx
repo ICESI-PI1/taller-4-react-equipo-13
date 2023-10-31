@@ -6,7 +6,7 @@ import { bookcontext } from '../context/bookcontext'
 
 const CreateBook = () => {
   const[bookEdit, setBookEdit]= useState({id:"", title:"", publicationDate:"", authorId: ""})
-
+  const[alert, setAlert]= useState("")
   const addBook = async (book) => {
     try {
       // Comprueba si el libro ya tiene un ID asignado
@@ -21,10 +21,14 @@ const CreateBook = () => {
         */
         // Realiza una solicitud POST para crear un nuevo libro
         const res = await axios.post("/libros", book);
+        if (res.status !== 201) {
+          setAlert(res.status.toString);
+        }
         if (res.status === 201) {
           setBookEdit(res.data);
         }
-      //}
+        
+        
     } catch (e) {
       console.log(e);
     }
@@ -32,7 +36,7 @@ const CreateBook = () => {
 
   return (
       <bookcontext.Provider>
-          <BookForm addBook={addBook} bookEdit={bookEdit}/>
+          <BookForm addBook={addBook} bookEdit={bookEdit} alert={alert} />
       </bookcontext.Provider>
   )
 }

@@ -11,6 +11,11 @@ function Bookview({ books, getOneBook, getBooks, onDeleteBook }) {
     setSearchValue(e.target.value);
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   const handleSearch = () => {
     if (searchValue.trim() === '') {
       getBooks();
@@ -19,7 +24,6 @@ function Bookview({ books, getOneBook, getBooks, onDeleteBook }) {
     }
   };
 
-  // Llama a getBooks cuando se monta el componente
   useEffect(() => {
     getBooks();
   }, []);
@@ -55,7 +59,7 @@ function Bookview({ books, getOneBook, getBooks, onDeleteBook }) {
           <tr key={index}>
             <th scope="row">{book.id}</th>
             <td>{book.title}</td>
-            <td>{book.publicationDate}</td>
+            <td>{formatDate(book.publicationDate)}</td>
             <td>{book.authorId}</td>
             <td>
               <Button
